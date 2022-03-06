@@ -1,0 +1,9 @@
+.loginstatus {
+    display: flex;
+    justify-content: end;
+}
+
+.taak > a {
+    display: flex;
+    justify-content: end;
+}

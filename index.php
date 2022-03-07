@@ -9,7 +9,7 @@
         echo "error" . $taak . "<br />" . $conn->error;
     }
 }
-    $query = "SELECT * FROM `taak` WHERE user_id='".$_SESSION["user_id"]."'";
+    $query = "SELECT * FROM `taak` WHERE user_id='".$_SESSION["user_id"]."' ORDER BY id DESC";
     $result=$conn->query($query);
     if ( $conn->query($query) === FALSE) {
         echo "error" . $query . "<br />" . $conn->error;
@@ -22,6 +22,8 @@
         }
     }
 
+    
+
     $conn->close();
 ?>
 
@@ -30,10 +32,26 @@
 ?>
 <div class="taak">
     <a href="addtask.php">Voeg taak toe</a>
+    <h1>Taken</h1>
 </div>
-
-
-
+    <?php if (!isset($taak)): 
+    echo "<h1>je hebt geen taken</h1>";    
+        else: 
+        ?>
+    <?php foreach ($taak as $row): ?> 
+    <ul>
+        <li>
+        <table>
+            <tr>
+            <a href="taak.php?id=<?php echo $row['id']?>">
+            <h2><?php echo $row['task']?></h2>
+            </a>
+            </tr>
+        </table>
+        </li>
+    </ul>
+    <?php endforeach; ?>
+    <?php endif; ?>
 <?php
     include "footer.php";
 ?>

@@ -9,7 +9,7 @@
         echo "error" . $taak . "<br />" . $conn->error;
     }
 }
-    $query = "SELECT * FROM `taak` WHERE user_id='".$_SESSION["user_id"]."' ORDER BY id DESC";
+    $query = "SELECT * FROM `taak` WHERE deleted IS NULL AND user_id='".$_SESSION["user_id"]."' ORDER BY id DESC";
     $result=$conn->query($query);
     if ( $conn->query($query) === FALSE) {
         echo "error" . $query . "<br />" . $conn->error;
@@ -44,7 +44,11 @@
         <table>
             <tr>
             <a href="taak.php?id=<?php echo $row['id']?>">
-            <h2><?php echo $row['task']?></h2>
+            <?php if(isset($row['closed'])):?>
+                <h2><s><?php echo $row['task']?></s></h2>
+            <?php else: ?>
+                <h2><?php echo $row['task']?></h2>
+            <?php endif; ?>
             </a>
             </tr>
         </table>

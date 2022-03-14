@@ -45,7 +45,6 @@ $query = "SELECT * FROM `interactie` WHERE taak_id='".$_GET["id"]."' ORDER BY id
     </ul>
     <?php endforeach; ?>
 
-    <div class="del">
         <?php if ($taak['closed']):?>
             <a href="opentask.php?id=<?php echo $taak['id']?>">taak openen</a>
             <a href="deletetask.php?id=<?php echo $taak['id']?>">taak verwijderen</a>
@@ -53,7 +52,6 @@ $query = "SELECT * FROM `interactie` WHERE taak_id='".$_GET["id"]."' ORDER BY id
             <a href="updatetask.php?id=<?php echo $taak['id']?>">taak wijzigen</a>
             <a href="closetask.php?id=<?php echo $taak['id']?>">taak sluiten</a>
         <?php endif; ?>
-    </div>
 <?php
     "footer.php";
 ?>

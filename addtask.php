@@ -7,7 +7,6 @@ include "connection.php";
         $task = "INSERT INTO `taak` (task, user_id)
         VALUES('$task', '$user_id')"; 
         $result = $conn->query($task);
-        
         $task_id = $conn->insert_id;
         $action = "INSERT INTO `interactie` (acties, taak_id)
         VALUES('Taak toegevoegd', '$task_id')";
